@@ -125,12 +125,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 2000);
     });
 
-    // Add floating animation to header elements
-    const headerElements = document.querySelectorAll('header h1, header .subtitle');
-    headerElements.forEach(element => {
-        element.classList.add('float');
-    });
-
     // Handle window resize for connector orientation
     window.addEventListener('resize', function() {
         const connectors = document.querySelectorAll('.connector');
