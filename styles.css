@@ -71,12 +71,13 @@ p {
 
 /* Header */
 header {
-    padding: 2.5rem 0;
+    padding: 3rem 0;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     color: white;
     text-align: center;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.2);
 }
 
 header::before {
@@ -86,25 +87,31 @@ header::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.15), transparent 40%);
+    background: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.15), transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1), transparent 40%);
     z-index: 1;
 }
 
 header .container {
     position: relative;
     z-index: 2;
+    max-width: 1000px;
 }
 
 header h1 {
     color: white;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 3.2rem;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
 }
 
 .subtitle {
-    font-size: 1.25rem;
-    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.95);
     font-weight: 500;
+    letter-spacing: 0.02em;
 }
 
 /* Hero Section */
@@ -115,6 +122,7 @@ header h1 {
     text-align: center;
     position: relative;
     overflow: hidden;
+    margin-top: -1px;
 }
 
 .hero::after {
@@ -128,59 +136,67 @@ header h1 {
     z-index: 1;
 }
 
-.hero .container {
-    position: relative;
-    z-index: 2;
-}
-
 .hero-content {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .hero-image {
     flex: 0 0 auto;
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.hero-image:hover {
+    transform: translateY(-5px);
 }
 
 .hero-image img {
-    max-width: 250px;
+    max-width: 280px;
     height: auto;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
 }
 
 .hero-text {
     flex: 1;
     text-align: left;
+    padding: 0 2rem;
 }
 
 .hero h2 {
     color: white;
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     margin-bottom: 1.5rem;
     line-height: 1.2;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: -0.02em;
 }
 
 .hero p {
     font-size: 1.25rem;
     margin-bottom: 2.5rem;
     opacity: 0.95;
+    line-height: 1.7;
 }
 
 /* CTA Button */
 .cta-button {
     display: inline-block;
-    padding: 1rem 2.5rem;
+    padding: 1.1rem 2.8rem;
     background-color: var(--accent);
     color: white;
-    border-radius: 8px;
+    border-radius: 12px;
     font-weight: 600;
     font-size: 1.1rem;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+    letter-spacing: 0.02em;
 }
 
 .cta-button::after {
@@ -198,16 +214,25 @@ header h1 {
     background-color: #e11d8f;
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(236, 72, 153, 0.4);
+    box-shadow: 0 8px 20px rgba(236, 72, 153, 0.4);
 }
 
 .cta-button:hover::after {
     left: 100%;
 }
 
+.cta-button i {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover i {
+    transform: translateX(4px);
+}
+
 /* About Section */
 .about {
-    padding: 5rem 0;
+    padding: 6rem 0;
     background-color: var(--bg);
     position: relative;
 }
@@ -225,69 +250,59 @@ header h1 {
 }
 
 .about p {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
     color: var(--text);
-    line-height: 1.7;
+    line-height: 1.8;
+    letter-spacing: 0.01em;
 }
 
 /* Curriculum Section */
 .curriculum {
-    padding: 6rem 0;
+    padding: 7rem 0;
     background-color: var(--bg-alt);
     position: relative;
 }
 
 .curriculum h2 {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
     color: var(--dark);
+    font-size: 2.5rem;
+    letter-spacing: -0.02em;
 }
 
 .curriculum-pathway {
     display: flex;
-    flex-direction: column;
-    max-width: 900px;
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 2rem;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
 .curriculum-item {
     background-color: var(--bg);
     padding: 2.5rem;
-    border-radius: 16px;
-    transition: all 0.4s ease;
+    border-radius: 20px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    opacity: 0;
-    transform: translateY(20px);
+    opacity: 1;
+    transform: translateY(0);
     position: relative;
     z-index: 2;
-    margin-bottom: 3rem;
-    height: 250px;
-    min-height: 250px;
+    margin-right: 2rem;
+    flex: 0 0 280px;
     height: auto;
     display: flex;
     flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .curriculum-item:last-child {
-    margin-bottom: 0;
-}
-
-.curriculum-item.animate {
-    animation: fadeInUp 0.8s forwards;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    margin-right: 0;
 }
 
 .curriculum-item:hover {
@@ -295,14 +310,43 @@ header h1 {
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
+.curriculum-item .icon {
+    font-size: 2.8rem;
+    margin-bottom: 1.8rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.curriculum-item:hover .icon {
+    transform: scale(1.1);
+}
+
+.curriculum-item h3 {
+    color: var(--dark);
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    letter-spacing: -0.01em;
+}
+
+.curriculum-item p {
+    color: var(--text-light);
+    margin-bottom: 0;
+    flex-grow: 1;
+    line-height: 1.6;
+}
+
+/* Connector styles */
 .curriculum-item .connector {
     position: absolute;
-    height: 3rem;
-    width: 3px;
-    background: linear-gradient(to bottom, var(--primary), var(--secondary));
-    bottom: -3rem;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    right: -26px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 2px;
+    background-color: var(--primary);
     z-index: 1;
 }
 
@@ -310,136 +354,34 @@ header h1 {
     display: none;
 }
 
-.curriculum-item .step {
-    position: absolute;
-    top: -12px;
-    left: 30px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: white;
-    padding: 0.3rem 1rem;
-    border-radius: 30px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
-}
-
-.icon {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--primary);
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
-}
-
-.curriculum-item h3 {
-    color: var(--dark);
-    margin-bottom: 1rem;
-}
-
-.curriculum-item p {
-    color: var(--text-light);
-    margin-bottom: 0;
-    flex-grow: 1;
-}
-
-@media (min-width: 768px) {
-    .curriculum-pathway {
-        flex-direction: row;
-        align-items: stretch;
-        justify-content: space-between;
-        gap: 2.5rem;
-    }
-    
-    .curriculum-item {
-        flex: 1;
-        margin-bottom: 0;
-        height: 260px;
-        min-height: 260px;
-        height: auto;
-    }
-    
-    .curriculum-item .connector {
-        height: 3px;
-        width: 2.5rem;
-        bottom: 50%;
-        left: 100%;
-        transform: translateY(50%);
-    }
-    
-    .curriculum-item .step {
-        top: -12px;
-        left: 30px;
-    }
-}
-
-/* Highlight Section */
-.highlight {
-    padding: 6rem 0;
-    background: linear-gradient(135deg, var(--secondary), var(--primary));
-    color: white;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.highlight::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.15), transparent 50%);
-    z-index: 1;
-}
-
-.highlight .container {
-    position: relative;
-    z-index: 2;
-}
-
-.highlight h2 {
-    color: white;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.note {
-    font-style: italic;
-    opacity: 0.9;
-    font-size: 1.1rem;
-}
-
 /* Team Section */
 .team {
-    padding: 6rem 0;
+    padding: 7rem 0;
     background-color: var(--bg);
 }
 
 .team h2 {
     text-align: center;
-    margin-bottom: 3.5rem;
+    margin-bottom: 4rem;
     color: var(--dark);
+    font-size: 2.5rem;
+    letter-spacing: -0.02em;
 }
 
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 3rem;
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
 .team-member {
     background-color: var(--bg);
     padding: 2.5rem;
-    border-radius: 16px;
+    border-radius: 20px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-    transition: all 0.4s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
@@ -451,7 +393,8 @@ header h1 {
 .team-member h3 {
     margin-bottom: 0.5rem;
     color: var(--dark);
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    letter-spacing: -0.01em;
 }
 
 .team-member .role {
@@ -459,6 +402,7 @@ header h1 {
     font-weight: 600;
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
+    letter-spacing: 0.02em;
 }
 
 .team-member ul {
@@ -469,8 +413,17 @@ header h1 {
 
 .team-member li {
     margin-bottom: 0.75rem;
-    line-height: 1.5;
+    line-height: 1.6;
     color: var(--text-light);
+    position: relative;
+    padding-left: 0.5rem;
+}
+
+.team-member li::before {
+    content: '•';
+    color: var(--primary);
+    position: absolute;
+    left: -0.5rem;
 }
 
 /* CTA Section */
@@ -567,37 +520,62 @@ header h1 {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 2.2rem;
+    header h1 {
+        font-size: 2.4rem;
     }
 
-    h2 {
-        font-size: 1.8rem;
+    .subtitle {
+        font-size: 1.1rem;
     }
 
     .hero-content {
         flex-direction: column-reverse;
+        gap: 2rem;
     }
 
     .hero-text {
         text-align: center;
+        padding: 0 1rem;
     }
 
     .hero-image img {
-        max-width: 200px;
-        margin-bottom: 2rem;
+        max-width: 220px;
+        margin-bottom: 1rem;
     }
 
-    .curriculum-grid, .team-grid {
+    .curriculum-pathway {
+        flex-direction: column;
+        overflow-x: visible;
+    }
+
+    .curriculum-item {
+        padding: 2rem;
+        margin-right: 0;
+        margin-bottom: 2rem;
+        flex: 0 0 auto;
+    }
+
+    .curriculum-item .connector {
+        display: none;
+    }
+
+    .team-grid {
         grid-template-columns: 1fr;
     }
+}
 
-    .curriculum {
-        padding: 4rem 0;
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 2rem;
     }
-
-    .team, .about, .highlight, .cta, .logistics, .benefits, .contact {
-        padding: 3.5rem 0;
+    
+    .hero h2 {
+        font-size: 2rem;
+    }
+    
+    .cta-button {
+        padding: 1rem 2rem;
+        font-size: 1rem;
     }
 }
 
